@@ -8,9 +8,11 @@
 		Click on a Recipe to View Details
 	</p>
 </div>
-<ng-template class="container-fluid" #recipeDetail>
-	<div class="card" style="width: 95%; height: 100vh">
-		<img class="card-img-top" [src]="recipe.image" alt="Card image cap"  />
+<ng-template class="container-fluid dimenssion" #recipeDetail>
+	<div class="card" style="width: 100%;">
+		<div class="card-img">
+			<img [src]="recipe.image" class="img-fluid rounded-start rounded-end " alt="food image" />
+		</div>
 		<div class="card-body">
 			<h5 class="card-title">
 				{{recipe.name}}
@@ -18,7 +20,7 @@
 			<p class="card-text">
 				{{recipe.description}}
 			</p>
-			<a href="#" class="btn btn-primary">Add To Cart</a>
+			<a class="btn btn-primary">Add To Cart</a>
 		</div>
 	</div>
 </ng-template>

@@ -12,18 +12,18 @@ export class RecipeDataService {
 
   recipes : Recipe[] = [{
     name:'Biriyani',
-    description:'Hyderabad Style, Fire in mouth !',
+    description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim diam quis enim lobortis. Nisl suscipit adipiscing bibendum est. Risus feugiat in ante metus dictum at tempor commodo ullamcorper.',
     image:'https://img.freepik.com/free-photo/veg-biryani-veg-pulav-fried-rice-indian-food-generative-ai_1258-151588.jpg?size=626&ext=jpg'
   },
   {
     name:'Egg Fried Noodles',
-    description:'Uncle Roger Recipe !. What more do you need !?',
+    description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dignissim diam quis enim lobortis. Nisl suscipit adipiscing bibendum est. Risus feugiat in ante metus dictum at tempor commodo ullamcorper.',
     image:'https://img.freepik.com/free-photo/top-view-delicious-noodles-concept_23-2148773774.jpg?size=626&ext=jpg'
   },
   {
     name:'Pizza',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus sit amet dictum sit amet. Eu volutpat odio facilisis mauris. Turpis in eu mi bibendum neque egestas.',
-    image:'https://img.freepik.com/free-photo/traditional-supreme-pizza-black-stone_123827-20345.jpg?size=626&ext=jpg'
+    image:'https://img.freepik.com/free-photo/tasty-homemade-traditional-pizza-italian-recipe_24972-2141.jpg?size=626&ext=jpg'
   },
   {
     name:'Big Fat Burger',
