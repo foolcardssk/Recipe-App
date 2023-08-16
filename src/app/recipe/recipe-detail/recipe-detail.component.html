@@ -1,1 +1,24 @@
-<p>recipe-detail works!</p>
+<br />
+<h4>Recipe Details</h4>
+<hr />
+
+<div class="container-fluid" *ngIf="!recipeClicked; else recipeDetail">
+	<p>
+		<i class="fa-solid fa-arrow-left-long"></i>
+		Click on a Recipe to View Details
+	</p>
+</div>
+<ng-template class="container-fluid" #recipeDetail>
+	<div class="card" style="width: 95%; height: 100vh">
+		<img class="card-img-top" [src]="recipe.image" alt="Card image cap"  />
+		<div class="card-body">
+			<h5 class="card-title">
+				{{recipe.name}}
+			</h5>
+			<p class="card-text">
+				{{recipe.description}}
+			</p>
+			<a href="#" class="btn btn-primary">Add To Cart</a>
+		</div>
+	</div>
+</ng-template>

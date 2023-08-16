@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Recipe } from '../recipe-data.model';
+import { RecipeDataService } from '../recipe-data.service';
+import { DescPipe } from 'src/app/shared/desc.pipe';
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.css']
 })
-export class RecipeListComponent {
+export class RecipeListComponent implements OnInit{
+
+  recipes: Recipe[];
+  constructor(private recipeData: RecipeDataService){}
+
+  ngOnInit(): void {
+    this.recipes = this.recipeData.recipes;
+  }
+
+  onRecipeClick(recipe: Recipe){
+    this.recipeData.recipeChoosen.next(recipe)
+  }
 
 }

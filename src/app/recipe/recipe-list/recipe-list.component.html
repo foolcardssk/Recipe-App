@@ -1,1 +1,17 @@
-<p>recipe-list works!</p>
+<br />
+<h4>Recipe List</h4>
+<hr />
+<ul class="list-group list-group-flush" *ngFor="let recipe of recipes">
+	<li class="list-group-item">
+		<div class="card" style="width: 100%" (click)="onRecipeClick(recipe)">
+			<div class="card-body">
+				<h6 class="card-title">
+					{{ recipe.name }}
+				</h6>
+				<p class="card-text" style="font-size: 12px">
+					{{ recipe.description | desc:30 }}
+				</p>
+			</div>
+		</div>
+	</li>
+</ul>
