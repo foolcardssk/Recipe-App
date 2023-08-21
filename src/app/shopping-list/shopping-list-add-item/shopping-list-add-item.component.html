@@ -1,31 +1,42 @@
 <div class="container">
-	<form>
+	<form (ngSubmit)="onAdd()" #f="ngForm">
 		<div class="row">
 			<div class="col">
 				<input
 					type="text"
 					class="form-control"
 					placeholder="Ingredient"
+					ngModel
+					name="name"
 				/>
 			</div>
 			<div class="col">
 				<input
 					type="number"
-					min="1"
 					class="form-control"
 					placeholder="Quantity"
+					ngModel
+					name="quantity"
 				/>
 			</div>
 		</div>
 		<br />
 		<div class="container">
-			<button type="button" class="btn btn-success btn-space col-md-2">
+			<button type="submit" class="btn btn-success btn-space col-md-2">
 				Add
 			</button>
-			<button type="button" class="btn btn-danger btn-space col-md-2">
+			<button
+				type="button"
+				(click)="onRemove()"
+				class="btn btn-danger btn-space col-md-2"
+			>
 				Remove
 			</button>
-			<button type="button" class="btn btn-warning btn-space col-md-2">
+			<button
+				type="button"
+				(click)="this.cartForm.reset()"
+				class="btn btn-warning btn-space col-md-2"
+			>
 				Clear
 			</button>
 		</div>

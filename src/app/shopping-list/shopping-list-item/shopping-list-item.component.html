@@ -1,6 +1,6 @@
-<li class="list-group-item d-flex justify-content-between align-items-center">
-	name
+<li (click)="onItemClick(item)" class="list-group-item d-flex justify-content-between align-items-center">
+	{{item.name}}
 	<span class="badge bg-secondary">
-		quantity
+		{{item.quantity}}
 	</span>
 </li>

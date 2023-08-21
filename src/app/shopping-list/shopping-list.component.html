@@ -11,7 +11,15 @@
 			<hr />
 			<h5>Cart Items</h5>
 			<br />
-			<app-shopping-list-item></app-shopping-list-item>
+			<ul class="list-group">
+				<div *ngIf="ingredients.length > 0; else noItems">
+					<app-shopping-list-item
+						[item]="val"
+						*ngFor="let val of ingredients"
+					></app-shopping-list-item>
+				</div>
+				<ng-template #noItems> No Item In Your Cart. </ng-template>
+			</ul>
 		</div>
 	</div>
 </div>
