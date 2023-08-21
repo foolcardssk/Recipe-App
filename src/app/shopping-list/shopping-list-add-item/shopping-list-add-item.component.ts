@@ -13,7 +13,6 @@ export class ShoppingListAddItemComponent implements OnInit, OnDestroy{
   @ViewChild('f') cartForm: NgForm;
 
   itemClickSubscription: Subscription;
-  addToCartSubscription: Subscription;
   constructor(private shoppingCart: ShoppingCartDataService){}
 
 
@@ -22,28 +21,10 @@ export class ShoppingListAddItemComponent implements OnInit, OnDestroy{
     this.itemClickSubscription = this.shoppingCart.itemClick.subscribe(data=>{
       this.cartForm.setValue(data);
     });
-
-    // this.addToCartSubscription = this.shoppingCart.addToCart.subscribe(data=>{
-    //   for(let ele of data){
-    //     let temp = this.shoppingCart.ingredient.findIndex(data=>data.name === ele.name);
-    //     if( temp > -1){
-    //       console.log(`Previous Val ${this.shoppingCart.ingredient[temp].quantity}`);
-    //       this.shoppingCart.ingredient[temp].quantity += ele.quantity
-    //       console.log(`Updated Val ${this.shoppingCart.ingredient[temp].quantity}`);
-          
-    //     }
-    //     else{
-    //       this.shoppingCart.addIngrediant(ele)
-    //       console.log("pushed data");
-    //     }
-    //   }
-    // })
-
   }
 
   ngOnDestroy(): void {
     this.itemClickSubscription.unsubscribe();
-    // this.addToCartSubscription.unsubscribe();
   }
 
   findCartIndex(name: string): number{
