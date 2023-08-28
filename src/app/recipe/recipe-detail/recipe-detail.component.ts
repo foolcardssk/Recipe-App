@@ -22,7 +22,7 @@ export class RecipeDetailComponent implements OnInit{
   }
 
   onAddToCart(){
-    this.shoppingCart.addToCart.next(structuredClone(this.recipe.ingrediants));
+    this.shoppingCart.addToCart.next(structuredClone(this.recipe.ingredients));
     console.log('Add to cart Btn clicked !');
     
   }

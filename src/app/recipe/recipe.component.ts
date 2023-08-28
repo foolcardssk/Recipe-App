@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ShoppingCartDataService } from '../shared/shopping-cart-data.service';
 import { Subscription } from 'rxjs';
+import { Recipe } from '../shared/recipe-data.model';
+import { RecipeDataService } from '../shared/recipe-data.service';
 
 @Component({
   selector: 'app-recipe',
@@ -9,10 +11,10 @@ import { Subscription } from 'rxjs';
 })
 export class RecipeComponent implements OnInit, OnDestroy{
   
-
+  addRecipeMode: boolean = true;
   addToCartSubscription: Subscription;
 
-  constructor(private shoppingCart: ShoppingCartDataService){}
+  constructor(private shoppingCart: ShoppingCartDataService, private recipeData: RecipeDataService){}
   
 
   ngOnInit(): void {
@@ -34,5 +36,10 @@ export class RecipeComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.addToCartSubscription.unsubscribe();
+  }
+
+  pushRecipe(recipe: Recipe){
+    this.recipeData.recipes.push(recipe);
+    this.addRecipeMode = false;
   }
 }
