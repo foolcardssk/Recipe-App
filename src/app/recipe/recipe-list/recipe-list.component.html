@@ -1,28 +1,23 @@
-<br />
-<h4>Recipe List</h4>
-<hr />
-<ul class="list-group list-group-flush" *ngFor="let recipe of recipes">
-	<li class="list-group-item">
-		<div class="card mb-3" style="width: 100%;"  (click)="onRecipeClick(recipe)">
-			<div class="row g-2">
-				<div class="col-md-3">
-					<img
-						[src]="recipe.image"
-						class="img-fluid rounded-start"
-						alt="food image"
-					/>
-				</div>
-				<div class="col-md-8">
-					<div class="card-body">
-						<h5 class="card-title">
-							{{ recipe.name }}
-						</h5>
-						<p class="card-text" style="font-size: 15px">
-							{{ recipe.description | desc : 30 }}
-						</p>
-					</div>
+<li class="list-group-item">
+	<div class="card mb-3" style="width: 100%;"  (click)="onRecipeClick(recipe)">
+		<div class="row g-2">
+			<div class="col-md-3">
+				<img
+					[src]="recipe.image"
+					class="img-fluid rounded-start"
+					alt="food image"
+				/>
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">
+						{{ recipe.name }}
+					</h5>
+					<p class="card-text" style="font-size: 15px">
+						{{ recipe.description | desc : 30 }}
+					</p>
 				</div>
 			</div>
 		</div>
-	</li>
-</ul>
+	</div>
+</li>

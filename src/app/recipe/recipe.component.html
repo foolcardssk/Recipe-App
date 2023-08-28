@@ -1,14 +1,35 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-6">
-			<app-recipe-list></app-recipe-list>
+			<br />
+			<h4>Recipe List</h4>
+			<hr />
+			<ng-template *ngIf="recipes.length > 0 ? true : false; else noRecipe" >
+				<ul>
+					<app-recipe-list
+						(recipeClicked)="addRecipeMode = false"
+						[recipe]="recipe"
+						*ngFor="let recipe of recipes"
+					></app-recipe-list>
+				</ul>
+			</ng-template>
+
+			<ng-template #noRecipe>
+				<p> 
+					Add New Recipes
+				</p>
+			</ng-template>
+
 		</div>
 		<div class="col-lg-6">
 			<app-recipe-detail
+				(addRecipeEvent)="addRecipeMode = true"
 				*ngIf="!addRecipeMode; else addRecipe"
 			></app-recipe-detail>
 			<ng-template #addRecipe>
-				<app-recipe-add (newRecipeAdded)="pushRecipe($event)" ></app-recipe-add>
+				<app-recipe-add
+					(newRecipeAdded)="pushRecipe($event)"
+				></app-recipe-add>
 			</ng-template>
 		</div>
 	</div>

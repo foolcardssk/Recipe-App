@@ -1,6 +1,11 @@
-<br />
-<h4>Recipe Details</h4>
-<hr />
+<div class="container-fluid">
+	<br>
+	<button type="button" (click)="onClick()" class="btn btn-primary btn-space float-end col-md-2">
+		Add Recipe
+	</button>
+	<h4>Recipe Details</h4>
+	<hr />
+</div>
 
 <div class="container-fluid" *ngIf="!recipeClicked; else recipeDetail">
 	<p>
@@ -9,18 +14,22 @@
 	</p>
 </div>
 <ng-template class="container-fluid dimenssion" #recipeDetail>
-	<div class="card" style="width: 100%;">
+	<div class="card" style="width: 100%">
 		<div class="card-img">
-			<img [src]="recipe.image" class="img-fluid rounded-start rounded-end " alt="food image" />
+			<img
+				[src]="recipe.image"
+				class="img-fluid rounded-start rounded-end"
+				alt="food image"
+			/>
 		</div>
 		<div class="card-body">
 			<h5 class="card-title">
-				{{recipe.name}}
+				{{ recipe.name }}
 			</h5>
 			<p class="card-text">
-				{{recipe.description}}
+				{{ recipe.description }}
 			</p>
-			<a class="btn btn-primary" (click)="onAddToCart()" >Add To Cart</a>
+			<a class="btn btn-primary" (click)="onAddToCart()">Add To Cart</a>
 		</div>
 	</div>
 </ng-template>

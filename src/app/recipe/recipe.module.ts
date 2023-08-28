@@ -8,6 +8,7 @@ import { CommonModule } from "@angular/common";
 import { DescPipe } from "../shared/desc.pipe";
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 import { FormsModule } from "@angular/forms";
+import { RecipeDataService } from "../shared/recipe-data.service";
 
 const routes: Routes = [
     {path:'', component:RecipeComponent}
@@ -30,6 +31,9 @@ const routes: Routes = [
     ],
     exports: [
         RouterModule
+    ],
+    providers: [
+        RecipeDataService
     ]
 })
 export class RecipeModule{}

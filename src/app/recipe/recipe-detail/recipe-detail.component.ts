@@ -1,5 +1,5 @@
 import { Recipe } from '../../shared/recipe-data.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RecipeDataService } from '../../shared/recipe-data.service';
 import { ShoppingCartDataService } from 'src/app/shared/shopping-cart-data.service';
 
@@ -9,6 +9,8 @@ import { ShoppingCartDataService } from 'src/app/shared/shopping-cart-data.servi
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit{
+
+  @Output() addRecipeEvent = new EventEmitter<any>();
 
   recipeClicked: boolean = false;
   recipe: Recipe;
@@ -25,6 +27,10 @@ export class RecipeDetailComponent implements OnInit{
     this.shoppingCart.addToCart.next(structuredClone(this.recipe.ingredients));
     console.log('Add to cart Btn clicked !');
     
+  }
+
+  onClick(){
+    this.addRecipeEvent.emit();
   }
 
 }
