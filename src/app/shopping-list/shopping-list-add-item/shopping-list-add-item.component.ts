@@ -44,7 +44,8 @@ export class ShoppingListAddItemComponent implements OnInit, OnDestroy{
   onRemove(){
     const temp = this.findCartIndex(this.cartForm.value.name)
     if( temp > -1){
-      this.shoppingCart.ingredient.splice(temp, 1);
+      // this.shoppingCart.ingredient.splice(temp, 1);
+      this.shoppingCart.removeIngredient(temp);
       this.cartForm.reset();
     }
   }

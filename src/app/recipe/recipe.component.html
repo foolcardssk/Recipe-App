@@ -4,7 +4,9 @@
 			<br />
 			<h4>Recipe List</h4>
 			<hr />
-			<ng-template *ngIf="recipes.length > 0 ? true : false; else noRecipe" >
+			<div
+				*ngIf="recipes.length > 0 ? true : false; else noRecipe"
+			>
 				<ul>
 					<app-recipe-list
 						(recipeClicked)="addRecipeMode = false"
@@ -12,14 +14,9 @@
 						*ngFor="let recipe of recipes"
 					></app-recipe-list>
 				</ul>
-			</ng-template>
+			</div>
 
-			<ng-template #noRecipe>
-				<p> 
-					Add New Recipes
-				</p>
-			</ng-template>
-
+			<ng-template #noRecipe>Add New Recipes</ng-template>
 		</div>
 		<div class="col-lg-6">
 			<app-recipe-detail

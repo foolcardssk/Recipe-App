@@ -9,6 +9,7 @@ import { DescPipe } from "../shared/desc.pipe";
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 import { FormsModule } from "@angular/forms";
 import { RecipeDataService } from "../shared/recipe-data.service";
+import { ShoppingCartDataService } from "../shared/shopping-cart-data.service";
 
 const routes: Routes = [
     {path:'', component:RecipeComponent}
@@ -33,7 +34,8 @@ const routes: Routes = [
         RouterModule
     ],
     providers: [
-        RecipeDataService
+        RecipeDataService,
+        ShoppingCartDataService
     ]
 })
 export class RecipeModule{}

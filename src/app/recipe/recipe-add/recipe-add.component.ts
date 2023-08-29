@@ -21,12 +21,20 @@ export class RecipeAddComponent {
     const index = this.ingredients.findIndex(val=>val.name === this.form.value.ingredient.trim().toLowerCase())
     if(index > -1){
       this.ingredients[index].quantity += this.form.value.quantity;
-      return;
     }
-      this.ingredients.push({
+      else{
+        this.ingredients.push({
         name: this.form.value.ingredient.trim().toLowerCase(),
         quantity: this.form.value.quantity
       })
+    }
+    this.form.setValue({
+      name: this.form.value.name,
+      image: this.form.value.image,
+      description: this.form.value.description,
+      ingredient: '',
+      quantity: 0
+    })
   }
 
   onRemove(){
@@ -41,7 +49,7 @@ export class RecipeAddComponent {
     
     this.form.setValue({
       name: this.form.value.name,
-      img: this.form.value.img,
+      image: this.form.value.image,
       description: this.form.value.description,
       ingredient: ingredient.name,
       quantity: ingredient.quantity
@@ -57,5 +65,6 @@ export class RecipeAddComponent {
       ingredients: structuredClone(this.ingredients)
     }
     this.newRecipeAdded.emit(this.recipe);
+    this.form.reset();
   }
 }

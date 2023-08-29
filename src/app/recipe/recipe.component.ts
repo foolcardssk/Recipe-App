@@ -36,9 +36,12 @@ export class RecipeComponent implements OnInit, OnDestroy{
         let temp = this.shoppingCart.ingredient.findIndex(item=>item.name === ele.name);
         if( temp > -1){
           this.shoppingCart.ingredient[temp].quantity += ele.quantity;
+
         }
         else{
           this.shoppingCart.addIngrediant(ele)
+          console.log(ele);
+          
           console.log("pushed data");
         }
       }
