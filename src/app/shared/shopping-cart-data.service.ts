@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment.development';
 
 @Injectable({
     providedIn: 'root'
-  })
+})
 export class ShoppingCartDataService{
 
     @Output() itemClick = new Subject<Ingredient>();
@@ -43,6 +43,10 @@ export class ShoppingCartDataService{
 
     removeIngredient(index: number){
         this.ingredient.splice(index, 1);
+        this.pushIngredients(this.ingredient);
+    }
+
+    pushChanges(){
         this.pushIngredients(this.ingredient);
     }
 }

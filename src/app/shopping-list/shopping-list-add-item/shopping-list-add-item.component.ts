@@ -34,7 +34,8 @@ export class ShoppingListAddItemComponent implements OnInit, OnDestroy{
   onAdd(){
     const temp = this.findCartIndex(this.cartForm.value.name)
     if( temp > -1){
-     this.shoppingCart.ingredient[temp].quantity += this.cartForm.value.quantity
+      this.shoppingCart.ingredient[temp].quantity += this.cartForm.value.quantity;
+      this.shoppingCart.pushChanges();
     }
     else{
       this.shoppingCart.addIngrediant(this.cartForm.value)
@@ -44,8 +45,16 @@ export class ShoppingListAddItemComponent implements OnInit, OnDestroy{
   onRemove(){
     const temp = this.findCartIndex(this.cartForm.value.name)
     if( temp > -1){
-      // this.shoppingCart.ingredient.splice(temp, 1);
-      this.shoppingCart.removeIngredient(temp);
+      if( this.shoppingCart.ingredient[temp].quantity === this.cartForm.value.quantity ){
+        this.shoppingCart.removeIngredient(temp);
+      }
+      else if(this.shoppingCart.ingredient[temp].quantity >= this.cartForm.value.quantity){
+        this.shoppingCart.ingredient[temp].quantity -= this.cartForm.value.quantity;
+        this.shoppingCart.pushChanges();
+      }
+      else {
+        alert('Your Value is higher than available amount !');
+      }
       this.cartForm.reset();
     }
   }

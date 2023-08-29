@@ -45,6 +45,7 @@ export class RecipeComponent implements OnInit, OnDestroy{
           console.log("pushed data");
         }
       }
+      alert('Your Items Were Added To Your Cart !');
     })
   }
 
