@@ -4,30 +4,38 @@
 			<br />
 			<h4>Recipe List</h4>
 			<hr />
-			<div
-				*ngIf="recipes.length > 0 ? true : false; else noRecipe"
-			>
+			<div *ngIf="recipes.length > 0 ? true : false; else noRecipe">
 				<ul>
 					<app-recipe-list
 						(recipeClicked)="addRecipeMode = false"
-						[recipe]="recipe"
-						*ngFor="let recipe of recipes"
+						[recipe]="{recipe, i}"
+						*ngFor="let recipe of recipes; index as i"
 					></app-recipe-list>
 				</ul>
 			</div>
-
 			<ng-template #noRecipe>Add New Recipes</ng-template>
 		</div>
+
+		<!-- Right Split Components -->
+
 		<div class="col-lg-6">
 			<app-recipe-detail
-				(addRecipeEvent)="addRecipeMode = true"
-				*ngIf="!addRecipeMode; else addRecipe"
+				*ngIf="addRecipeMode == false && editRecipeMode == false"
+				(editRecipeEvent)="editRecipeMode = true; addRecipeMode = false"
+				(addRecipeEvent)="addRecipeMode = true; editRecipeMode = false"
 			></app-recipe-detail>
-			<ng-template #addRecipe>
-				<app-recipe-add
-					(newRecipeAdded)="pushRecipe($event)"
-				></app-recipe-add>
-			</ng-template>
+
+			<app-recipe-add
+				*ngIf="addRecipeMode == true && editRecipeMode == false"
+				(newRecipeAdded)="pushRecipe($event)"
+				(goBackEvent)="onGoBack($event)"
+			></app-recipe-add>
+
+			<app-recipe-edit
+				*ngIf="addRecipeMode == false && editRecipeMode == true"
+				(recipeModified)="onRecipeModified($event)"
+				(goBackEvent)="onGoBack($event)"
+			></app-recipe-edit>
 		</div>
 	</div>
 </div>

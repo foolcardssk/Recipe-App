@@ -12,6 +12,8 @@ import { RecipeDataService } from '../shared/recipe-data.service';
 export class RecipeComponent implements OnInit, OnDestroy{
   
   addRecipeMode: boolean = false;
+  editRecipeMode: boolean = false;
+
   addToCartSubscription: Subscription;
   fetchRecipeSubscription: Subscription;
 
@@ -23,26 +25,19 @@ export class RecipeComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
 
     this.fetchRecipeSubscription = this.recipeData.getRecipe().subscribe(res=>{
-      console.log('result : ' + res);
       if(res !== null){
         this.recipes = res;
       }
     })
 
     this.addToCartSubscription = this.shoppingCart.addToCart.subscribe(itemsToBeAdded=>{
-      console.log('no. items to be added ' + itemsToBeAdded.length);
-      
       for(let ele of itemsToBeAdded){
         let temp = this.shoppingCart.ingredient.findIndex(item=>item.name === ele.name);
         if( temp > -1){
           this.shoppingCart.ingredient[temp].quantity += ele.quantity;
-
         }
         else{
           this.shoppingCart.addIngrediant(ele)
-          console.log(ele);
-          
-          console.log("pushed data");
         }
       }
       alert('Your Items Were Added To Your Cart !');
@@ -54,14 +49,19 @@ export class RecipeComponent implements OnInit, OnDestroy{
     this.fetchRecipeSubscription.unsubscribe();
   }
 
-  // pushRecipe(recipe: Recipe){
-  //   this.recipeData.recipes.push(recipe);
-  //   this.addRecipeMode = false;
-  // }
-
   pushRecipe(recipe: Recipe){
     this.recipes.push(recipe);
-    // this.addRecipeMode = false;
-    this.recipeData.pushRecipe(this.recipes).subscribe(res=>console.log(res));
+    this.recipeData.pushRecipe(this.recipes).subscribe();
   }
+
+  onRecipeModified(recipe: {recipe: Recipe, index: number}){
+    this.recipes[recipe.index] = recipe.recipe;
+    this.recipeData.pushRecipe(this.recipes).subscribe();
+  }
+
+  onGoBack(recipe: Recipe){
+    this.addRecipeMode = false; 
+    this.editRecipeMode = false;
+  }
+
 }

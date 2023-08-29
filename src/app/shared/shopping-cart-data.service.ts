@@ -30,7 +30,6 @@ export class ShoppingCartDataService{
     pushIngredients(items: Ingredient[]){
         this.http.put<Ingredient[]>(environment.apiUrl + '/cart.json', items)
         .subscribe(res=>{
-            console.log('put response : ' + res);
             this.modified.next(this.ingredient);
         })
     }
@@ -38,7 +37,6 @@ export class ShoppingCartDataService{
     addIngrediant(item: Ingredient){
         this.ingredient.push(item);
         this.pushIngredients(this.ingredient);
-        console.log('added and pushed');
     }
 
     removeIngredient(index: number){

@@ -2,7 +2,7 @@
 	<form (ngSubmit)="onSubmit()" #f="ngForm">
 		<br />
 		<button
-		(click)="onGoBack()"
+			(click)="onGoBack()"
 			type="button"
 			class="btn btn-primary btn-space float-end col-md-2"
 		>
@@ -14,7 +14,7 @@
 		>
 			Submit
 		</button>
-		<h4>Add new Recipe</h4>
+		<h4>Edit Recipe</h4>
 		<hr />
 		<!-- Recipe Name -->
 		<div class="row">
@@ -24,7 +24,7 @@
 					type="text"
 					class="form-control"
 					placeholder="Recipe Name"
-					ngModel
+					[ngModel]="recipe.recipe.name"
 					required
 					id="name"
 					name="name"
@@ -36,7 +36,7 @@
 					type="text"
 					class="form-control"
 					placeholder="link"
-					ngModel
+					[ngModel]="recipe.recipe.image"
 					name="image"
 				/>
 			</div>
@@ -46,7 +46,7 @@
 		<div class="form-group">
 			<label for="description"><h5>Description</h5></label>
 			<textarea
-				ngModel
+                [ngModel]="recipe.recipe.description"
 				name="description"
 				class="form-control"
 				id="description"
@@ -80,7 +80,7 @@
 		</div>
 		<br />
 		<!-- Button Section -->
-		<div class="container">
+		<div class="container btn-space">
 			<button type="button" (click)="onAdd()" class="btn btn-success btn-space col-md-2">
 				Add
 			</button>

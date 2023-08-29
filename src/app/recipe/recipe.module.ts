@@ -10,6 +10,7 @@ import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 import { FormsModule } from "@angular/forms";
 import { RecipeDataService } from "../shared/recipe-data.service";
 import { ShoppingCartDataService } from "../shared/shopping-cart-data.service";
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 
 const routes: Routes = [
     {path:'', component:RecipeComponent}
@@ -21,7 +22,8 @@ const routes: Routes = [
         RecipeListComponent,
         RecipeDetailComponent,
         DescPipe,
-        RecipeAddComponent
+        RecipeAddComponent,
+        RecipeEditComponent
     ],
     imports: [
         HttpClientModule,
